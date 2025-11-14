@@ -34,13 +34,23 @@ Aplikasi latihan soal IELTS/TOEFL dengan dua mode: **Web Application** dan **Ter
 ```
 PY IELTS/
 ├── index.html          # File HTML utama (Web Application)
-├── styles.css          # File CSS untuk styling
-├── script.js           # File JavaScript untuk logika aplikasi
-├── server.py           # Server HTTP untuk menjalankan web app
-├── quiz_app.py         # Aplikasi terminal/command-line
+├── css/                # Folder berisi file CSS
+│   └── styles.css      # File CSS untuk styling
+├── js/                 # Folder berisi file JavaScript
+│   ├── config.js       # Konfigurasi global dan state
+│   ├── utils.js        # Utility functions
+│   ├── storage.js      # LocalStorage functions
+│   ├── loader.js       # Load questions dari CSV
+│   ├── progress.js      # Progress tracking functions
+│   ├── stats.js        # Statistics dan chart functions
+│   ├── quiz.js         # Quiz logic (display, submit, etc)
+│   ├── measurement.js  # Measurement modal functions
+│   └── main.js         # Initialization
 ├── data/               # Folder berisi data CSV
 │   ├── quiz_batch1_2000.csv # File CSV berisi 2000 soal pertama
 │   └── quiz_batch2_2000.csv # File CSV berisi 2000 soal kedua
+├── server.py           # Server HTTP untuk menjalankan web app
+├── quiz_app.py         # Aplikasi terminal/command-line
 ├── quiz_state.json     # File untuk menyimpan progress (terminal version)
 └── README.md           # File dokumentasi ini
 ```
