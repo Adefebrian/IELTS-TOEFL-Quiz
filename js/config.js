@@ -2,6 +2,7 @@ const QuizConfig = {
     allQuestions: [],
     answeredIds: new Set(),
     questionStats: {},
+    levelHistory: [],
     currentQuestion: null,
     currentMode: null,
     selectedAnswer: null,

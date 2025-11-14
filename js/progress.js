@@ -10,6 +10,7 @@ function updateProgress() {
     const percentage = total > 0 ? (answered / total) * 100 : 0;
     document.getElementById('progressBar').style.width = percentage + '%';
     
+    saveState();
     updateMenuChart();
 }
 
