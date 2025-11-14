@@ -1,5 +1,6 @@
 const QuizConfig = {
     allQuestions: [],
+    allGrammarTopics: [], // Grammar topics dari semua level
     answeredIds: new Set(),
     questionStats: {},
     levelHistory: [],
@@ -14,6 +15,9 @@ const QuizConfig = {
     shuffledOptionsContent: [],
     shuffledCorrectLetter: null,
     chartInstance: null,
-    menuChartInstance: null
+    menuChartInstance: null,
+    // Learn Grammar state
+    selectedLevel: null,
+    selectedTopic: null
 };
 

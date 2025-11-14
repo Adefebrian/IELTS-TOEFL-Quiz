@@ -8,6 +8,10 @@ async function init() {
         
         await loadQuestions();
         
+        updateLoadingMessage('Memuat data grammar...');
+        
+        await loadGrammarData();
+        
         loadState();
         
         updateProgress();
