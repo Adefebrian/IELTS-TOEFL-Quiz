@@ -38,8 +38,9 @@ PY IELTS/
 ├── script.js           # File JavaScript untuk logika aplikasi
 ├── server.py           # Server HTTP untuk menjalankan web app
 ├── quiz_app.py         # Aplikasi terminal/command-line
-├── quiz_batch1_2000.csv # File CSV berisi 2000 soal pertama
-├── quiz_batch2_2000.csv # File CSV berisi 2000 soal kedua
+├── data/               # Folder berisi data CSV
+│   ├── quiz_batch1_2000.csv # File CSV berisi 2000 soal pertama
+│   └── quiz_batch2_2000.csv # File CSV berisi 2000 soal kedua
 ├── quiz_state.json     # File untuk menyimpan progress (terminal version)
 └── README.md           # File dokumentasi ini
 ```
@@ -110,10 +111,14 @@ Server akan otomatis membuka browser jika menggunakan `server.py`.
 ### ⚠️ Catatan Penting
 
 - **Server harus tetap berjalan** saat kamu menggunakan aplikasi
-- Progress disimpan di browser (sessionStorage), jadi akan hilang jika:
+- **Progress disimpan permanen** di browser (localStorage), jadi akan tetap tersimpan meskipun:
   - Browser ditutup
-  - Session berakhir
-  - Cache browser dibersihkan
+  - Server direstart
+  - Komputer direstart
+- Progress hanya akan hilang jika:
+  - Cache browser dibersihkan secara manual
+  - Browser dalam mode incognito/private (beberapa browser)
+  - User melakukan reset progress melalui aplikasi
 - Untuk menghentikan server, tekan `Ctrl+C` di terminal
 
 ---
@@ -226,7 +231,9 @@ Progress disimpan di file `quiz_state.json` di folder yang sama dengan aplikasi.
 **Solusi:**
 1. Pastikan server HTTP sedang berjalan
 2. Pastikan kamu membuka melalui `http://localhost:8000/index.html` (bukan `file://`)
-3. Pastikan file CSV (`quiz_batch1_2000.csv` dan `quiz_batch2_2000.csv`) ada di folder yang sama
+3. Pastikan file CSV ada di folder `data/`:
+   - `data/quiz_batch1_2000.csv`
+   - `data/quiz_batch2_2000.csv`
 4. Cek Console browser (F12) untuk melihat error detail
 
 #### Problem: Server tidak bisa dijalankan
@@ -240,20 +247,23 @@ Progress disimpan di file `quiz_state.json` di folder yang sama dengan aplikasi.
 #### Problem: Progress hilang setelah refresh
 
 **Solusi:**
-- Progress disimpan di sessionStorage browser, jadi akan hilang jika:
-  - Browser ditutup
-  - Tab ditutup
-  - Session berakhir
-- Ini adalah behavior normal untuk keamanan dan privasi
+- Progress sekarang disimpan di localStorage, jadi seharusnya **tidak hilang** setelah refresh
+- Jika progress masih hilang, kemungkinan:
+  - Browser dalam mode incognito/private (beberapa browser membatasi localStorage)
+  - Cache browser dibersihkan
+  - Browser setting yang membatasi localStorage
+- Cek di Console browser (F12) untuk melihat apakah localStorage berfungsi
 
 ### Terminal Application
 
 #### Problem: File CSV tidak ditemukan
 
 **Solusi:**
-1. Pastikan file CSV ada di folder yang sama dengan `quiz_app.py`
-2. Pastikan nama file tepat: `quiz_batch1_2000.csv` dan `quiz_batch2_2000.csv`
-3. Pastikan kamu menjalankan aplikasi dari folder yang benar
+1. Pastikan file CSV ada di folder `data/`:
+   - `data/quiz_batch1_2000.csv`
+   - `data/quiz_batch2_2000.csv`
+2. Pastikan nama file tepat
+3. Pastikan kamu menjalankan aplikasi dari folder root (bukan dari dalam folder data/)
 
 #### Problem: Error saat menjalankan aplikasi
 

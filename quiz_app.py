@@ -160,7 +160,7 @@ class QuizApp:
         print("\nMemuat data soal...\n")
         
         # Load questions from both CSV files
-        csv_files = ['quiz_batch1_2000.csv', 'quiz_batch2_2000.csv']
+        csv_files = ['data/quiz_batch1_2000.csv', 'data/quiz_batch2_2000.csv']
         if not self.question_manager.load_questions(csv_files):
             return False
         

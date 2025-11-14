@@ -46,12 +46,12 @@ function showError(message) {
             <p class="text-white text-lg mb-4">${message}</p>
             <div class="bg-white bg-opacity-20 rounded-lg p-4 text-left max-w-md mx-auto">
                 <p class="text-white text-sm mb-2"><strong>Cara mengatasi:</strong></p>
-                <ol class="text-white text-sm list-decimal list-inside space-y-1">
-                    <li>Pastikan server HTTP sedang berjalan (python3 server.py)</li>
-                    <li>Buka browser ke: http://localhost:8000/index.html</li>
-                    <li>Pastikan file CSV ada di folder yang sama</li>
-                    <li>Cek Console browser (F12) untuk detail error</li>
-                </ol>
+                        <ol class="text-white text-sm list-decimal list-inside space-y-1">
+                            <li>Pastikan server HTTP sedang berjalan (python3 server.py)</li>
+                            <li>Buka browser ke: http://localhost:8000/index.html</li>
+                            <li>Pastikan file CSV ada di folder data/</li>
+                            <li>Cek Console browser (F12) untuk detail error</li>
+                        </ol>
             </div>
             <button onclick="location.reload()" class="mt-6 bg-white text-purple-600 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition">
                 Muat Ulang
@@ -61,7 +61,7 @@ function showError(message) {
 }
 
 async function loadQuestions() {
-    const files = ['quiz_batch1_2000.csv', 'quiz_batch2_2000.csv'];
+    const files = ['data/quiz_batch1_2000.csv', 'data/quiz_batch2_2000.csv'];
     let loadedCount = 0;
     const errors = [];
     
@@ -126,7 +126,7 @@ async function loadQuestions() {
     
     if (allQuestions.length === 0) {
         const errorDetails = errors.length > 0 ? '\n\nDetail error:\n' + errors.join('\n') : '';
-        throw new Error(`Tidak ada soal yang berhasil dimuat.${errorDetails}\n\nPastikan:\n1. File CSV ada di folder yang sama\n2. Server HTTP sedang berjalan\n3. Buka melalui http://localhost:8000`);
+        throw new Error(`Tidak ada soal yang berhasil dimuat.${errorDetails}\n\nPastikan:\n1. File CSV ada di folder data/\n2. Server HTTP sedang berjalan\n3. Buka melalui http://localhost:8000`);
     }
     
     if (errors.length > 0 && allQuestions.length > 0) {
@@ -135,7 +135,7 @@ async function loadQuestions() {
 }
 
 function loadState() {
-    const saved = sessionStorage.getItem('quizState');
+    const saved = localStorage.getItem('quizState');
     if (saved) {
         try {
             const data = JSON.parse(saved);
@@ -150,7 +150,7 @@ function saveState() {
     const data = {
         answered_ids: Array.from(answeredIds)
     };
-    sessionStorage.setItem('quizState', JSON.stringify(data));
+    localStorage.setItem('quizState', JSON.stringify(data));
 }
 
 function updateProgress() {
