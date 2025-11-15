@@ -20,7 +20,7 @@ function updateMenuChart() {
     
     if (stats.total === 0) {
         container.innerHTML = `
-            <div class="text-center py-8 text-gray-500">
+            <div class="text-center py-8 text-gray-400">
                 <p class="text-sm">Belum ada statistik</p>
                 <p class="text-xs mt-1">Mulai latihan untuk melihat statistik kamu</p>
             </div>
@@ -31,7 +31,7 @@ function updateMenuChart() {
             levelBadgeEl.textContent = 'Beginner';
             const levelBadgeContainer = levelBadgeEl.parentElement;
             if (levelBadgeContainer) {
-                levelBadgeContainer.className = 'inline-block px-6 py-3 rounded-full bg-gray-100 text-gray-600 font-semibold text-lg mb-3';
+                levelBadgeContainer.className = 'inline-block px-6 py-3 rounded-full bg-[#F46B61] bg-opacity-20 text-[#F46B61] font-semibold text-lg mb-3';
             }
         }
         
@@ -166,7 +166,10 @@ function updateMenuChart() {
             levelBadgeEl.textContent = level.name;
             const levelBadgeContainer = levelBadgeEl.parentElement;
             if (levelBadgeContainer) {
-                levelBadgeContainer.className = `inline-block px-6 py-3 rounded-full ${level.bgColor} ${level.textColor} font-semibold text-lg mb-3`;
+                // Use inline style for custom colors
+                const bgColor = level.bgColor.includes('bg-[#') ? level.bgColor : `bg-[#F46B61] bg-opacity-20`;
+                const textColor = level.textColor.includes('text-[#') ? level.textColor : `text-[#F46B61]`;
+                levelBadgeContainer.className = `inline-block px-6 py-3 rounded-full ${bgColor} ${textColor} font-semibold text-lg mb-3`;
             }
         }
         

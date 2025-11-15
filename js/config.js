@@ -1,6 +1,8 @@
 const QuizConfig = {
     allQuestions: [],
     allGrammarTopics: [], // Grammar topics dari semua level
+    formulaData: [], // Data formula tenses
+    modalData: [], // Data modal verbs
     answeredIds: new Set(),
     questionStats: {},
     levelHistory: [],
@@ -18,6 +20,11 @@ const QuizConfig = {
     menuChartInstance: null,
     // Learn Grammar state
     selectedLevel: null,
-    selectedTopic: null
+    selectedTopic: null,
+    // Learn Vocab state
+    currentVocabWord: null,
+    vocabHistory: [],
+    vocabLearned: new Set(), // Kata yang sudah dipelajari (dengan Yes)
+    vocabLearnedData: [] // Data lengkap vocab yang sudah dipelajari
 };
 

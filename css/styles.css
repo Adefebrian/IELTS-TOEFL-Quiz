@@ -2,10 +2,12 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #1f2937;
 }
 
 .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #363636 0%, #1f2937 100%);
 }
 
 .card-hover {
@@ -24,23 +26,23 @@ body {
 
 .option-card:hover {
     transform: translateX(4px);
-    border-color: #667eea;
+    border-color: #F46B61;
 }
 
 .option-card.selected {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-color: #667eea;
+    background: #F46B61;
+    border-color: #F46B61;
     color: white;
 }
 
 .option-card.correct {
-    background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+    background: #10b981;
     border-color: #10b981;
     color: white;
 }
 
 .option-card.incorrect {
-    background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+    background: #ef4444;
     border-color: #ef4444;
     color: white;
 }
@@ -73,5 +75,159 @@ body {
 
 .progress-bar {
     transition: width 0.5s ease;
+}
+
+.formula-card, .modal-card {
+    animation: slideInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Flashcard Styles - Elegant Design */
+.perspective-1000 {
+    perspective: 1200px;
+}
+
+.preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flashcard {
+    transform-style: preserve-3d;
+}
+
+.flashcard-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Elegant button animations */
+.vocab-audio-btn {
+    animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+@keyframes pulse-gentle {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 25px rgba(244, 107, 97, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(244, 107, 97, 0.5);
+    }
+}
+
+.vocab-action-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.vocab-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.vocab-action-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.vocab-action-btn > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Smooth card entrance */
+.flashcard-wrapper {
+    animation: cardEntrance 0.6s ease-out;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Elegant hover effect for flashcard - subtle shadow only */
+.flashcard:hover {
+    filter: brightness(1.05);
+}
+
+.flashcard:active {
+    transform: scale(0.99);
+}
+
+/* Fix flashcard scroll */
+.flashcard-back {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+.flashcard-back .scrollable-content {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(244, 107, 97, 0.5) transparent;
+}
+
+.flashcard-back .scrollable-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.flashcard-back .scrollable-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.flashcard-back .scrollable-content::-webkit-scrollbar-thumb {
+    background-color: rgba(244, 107, 97, 0.5);
+    border-radius: 4px;
+}
+
+.flashcard-back .scrollable-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(244, 107, 97, 0.7);
 }
 

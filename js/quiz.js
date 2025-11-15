@@ -70,12 +70,12 @@ function displayQuestion(question) {
     
     letters.forEach((letter, index) => {
         const optionDiv = document.createElement('div');
-        optionDiv.className = 'option-card border-2 border-gray-200 rounded-xl p-4';
+        optionDiv.className = 'option-card bg-white border-2 border-gray-200 rounded-xl p-4 hover:border-[#F46B61]';
         optionDiv.onclick = () => selectOption(letter);
         optionDiv.innerHTML = `
             <div class="flex items-start">
-                <span class="font-bold text-lg mr-3">${letter}.</span>
-                <span class="flex-1">${QuizConfig.shuffledOptionsContent[index]}</span>
+                <span class="font-bold text-lg mr-3 text-gray-800">${letter}.</span>
+                <span class="flex-1 text-gray-700">${QuizConfig.shuffledOptionsContent[index]}</span>
             </div>
         `;
         optionDiv.dataset.letter = letter;

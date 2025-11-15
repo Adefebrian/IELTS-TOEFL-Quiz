@@ -31,10 +31,14 @@ function showMeasurement() {
     
     const levelBadge = document.getElementById('levelBadge');
     levelBadge.textContent = level.name;
-    levelBadge.className = `inline-block px-8 py-4 rounded-full ${level.bgColor} ${level.textColor} font-bold text-xl`;
+    // Use inline style for custom colors
+    const bgColor = level.bgColor.includes('bg-[#') ? level.bgColor : `bg-[#F46B61] bg-opacity-20`;
+    const textColor = level.textColor.includes('text-[#') ? level.textColor : `text-[#F46B61]`;
+    levelBadge.className = `inline-block px-8 py-4 rounded-full ${bgColor} ${textColor} font-bold text-xl`;
     
     const progressBar = document.getElementById('progressBarFill');
-    progressBar.className = `h-full bg-gradient-to-r ${level.color} rounded-full transition-all duration-1000`;
+    // Use solid color instead of gradient
+    progressBar.className = `h-full bg-[#F46B61] rounded-full transition-all duration-1000`;
     
     setTimeout(() => {
         animateProgressBar(percentage);

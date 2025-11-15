@@ -129,3 +129,101 @@ function getCategoriesByLevel(level) {
     return Array.from(categories).sort();
 }
 
+/**
+ * Load formula data dari formula.csv
+ */
+async function loadFormulaData() {
+    try {
+        updateLoadingMessage('Memuat data formula tenses...');
+        console.log('Loading formula.csv...');
+        
+        const response = await fetch('data/formula.csv');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const csvText = await response.text();
+        
+        if (!csvText || csvText.trim().length === 0) {
+            throw new Error('File kosong atau tidak valid');
+        }
+        
+        const result = Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true,
+            dynamicTyping: true
+        });
+        
+        console.log(`Parsed formula.csv, found ${result.data.length} rows`);
+        
+        result.data.forEach(row => {
+            if (row.No) {
+                QuizConfig.formulaData.push({
+                    no: parseInt(row.No),
+                    tense: (row.Tense || '').trim(),
+                    deskripsi: (row.Deskripsi || '').trim(),
+                    rumus: (row.Rumus || '').trim(),
+                    contoh_sederhana: (row['Contoh Kalimat Sederhana'] || '').trim(),
+                    contoh_kompleks: (row['Contoh Kalimat Kompleks'] || '').trim(),
+                    tips: (row['Tips Penggunaan'] || '').trim(),
+                    kesalahan_umum: (row['Kesalahan Umum'] || '').trim()
+                });
+            }
+        });
+        
+        console.log(`Successfully loaded ${QuizConfig.formulaData.length} formula entries`);
+    } catch (error) {
+        console.error('Error loading formula.csv:', error);
+    }
+}
+
+/**
+ * Load modal data dari modal.csv
+ */
+async function loadModalData() {
+    try {
+        updateLoadingMessage('Memuat data modal verbs...');
+        console.log('Loading modal.csv...');
+        
+        const response = await fetch('data/modal.csv');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const csvText = await response.text();
+        
+        if (!csvText || csvText.trim().length === 0) {
+            throw new Error('File kosong atau tidak valid');
+        }
+        
+        const result = Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true,
+            dynamicTyping: true
+        });
+        
+        console.log(`Parsed modal.csv, found ${result.data.length} rows`);
+        
+        result.data.forEach(row => {
+            if (row.No) {
+                QuizConfig.modalData.push({
+                    no: parseInt(row.No),
+                    modal_verb: (row.Modal_Verb || '').trim(),
+                    deskripsi: (row.Deskripsi || '').trim(),
+                    fungsi_utama: (row.Fungsi_Utama || '').trim(),
+                    contoh_sederhana: (row.Contoh_Kalimat_Sederhana || '').trim(),
+                    contoh_kompleks: (row.Contoh_Kalimat_Kompleks || '').trim(),
+                    tips_penggunaan: (row.Tips_Penggunaan || '').trim(),
+                    kesalahan_umum: (row.Kesalahan_Umum || '').trim()
+                });
+            }
+        });
+        
+        console.log(`Successfully loaded ${QuizConfig.modalData.length} modal entries`);
+    } catch (error) {
+        console.error('Error loading modal.csv:', error);
+    }
+}
+

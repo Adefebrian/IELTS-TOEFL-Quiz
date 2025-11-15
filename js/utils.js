@@ -8,11 +8,11 @@ function shuffleArray(array) {
 }
 
 function getLevel(percentage) {
-    if (percentage >= 90) return { name: 'Expert', color: 'from-purple-600 to-indigo-600', bgColor: 'bg-purple-100', textColor: 'text-purple-600' };
-    if (percentage >= 75) return { name: 'Advanced', color: 'from-blue-600 to-cyan-600', bgColor: 'bg-blue-100', textColor: 'text-blue-600' };
-    if (percentage >= 60) return { name: 'Intermediate', color: 'from-green-600 to-emerald-600', bgColor: 'bg-green-100', textColor: 'text-green-600' };
-    if (percentage >= 40) return { name: 'Basic', color: 'from-yellow-600 to-orange-600', bgColor: 'bg-yellow-100', textColor: 'text-yellow-600' };
-    return { name: 'Beginner', color: 'from-gray-600 to-gray-700', bgColor: 'bg-gray-100', textColor: 'text-gray-600' };
+    if (percentage >= 90) return { name: 'Expert', color: '#F46B61', bgColor: 'bg-[#F46B61] bg-opacity-20', textColor: 'text-[#F46B61]' };
+    if (percentage >= 75) return { name: 'Advanced', color: '#F46B61', bgColor: 'bg-[#F46B61] bg-opacity-20', textColor: 'text-[#F46B61]' };
+    if (percentage >= 60) return { name: 'Intermediate', color: '#F46B61', bgColor: 'bg-[#F46B61] bg-opacity-15', textColor: 'text-[#F46B61]' };
+    if (percentage >= 40) return { name: 'Basic', color: '#F46B61', bgColor: 'bg-[#F46B61] bg-opacity-15', textColor: 'text-[#F46B61]' };
+    return { name: 'Beginner', color: '#F46B61', bgColor: 'bg-[#F46B61] bg-opacity-10', textColor: 'text-[#F46B61]' };
 }
 
 function updateLoadingMessage(message) {
@@ -42,7 +42,7 @@ function showError(message) {
                     <li>Cek Console browser (F12) untuk detail error</li>
                 </ol>
             </div>
-            <button onclick="location.reload()" class="mt-6 bg-white text-purple-600 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition">
+            <button onclick="location.reload()" class="mt-6 bg-white text-[#264653] font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition">
                 Muat Ulang
             </button>
         </div>

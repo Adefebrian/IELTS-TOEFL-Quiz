@@ -12,6 +12,10 @@ async function init() {
         
         await loadGrammarData();
         
+        await loadFormulaData();
+        
+        await loadModalData();
+        
         loadState();
         
         updateProgress();
